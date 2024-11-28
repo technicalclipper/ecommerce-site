@@ -1,38 +1,86 @@
-.App {
-  text-align: center;
+body{
+  height:100vh;
+  font-family: "Italiana", sans-serif;
+  font-weight: 400;
+  font-style: normal;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.login-container{
+  height:480px;
+  width:650px;
+  border-radius: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  gap:30px;
+  background-color: aqua;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+  background-color: white;
 }
 
-.App-link {
-  color: #61dafb;
+input{
+  height:50px;
+  width:300px;
 }
+.inner-container{
+  display: flex;
+  flex-direction: column;
+  gap:30px;
+}
+.login{
+  border: none;
+  height:50px;
+  width:150px;
+  color:white;
+  background-color: black;
+  font-family: "Italiana", sans-serif;
+}
+.loginhead{
+  font-size: 30px;
+}
+.header{
+  height:100px;
+  background-color: black;
+  width:100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  gap:700px
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+}
+.navtitle{
+  font-size: 50px;
+  color:White;
+}
+.login-cont{
+  display: flex;
+  flex-direction: row;
+  gap:20px;
+}
+.header-login{
+  color:black;
+  background-color: white;
+  border:none;
+  height: 70px;
+  width:130px;
+  border-radius: 25px;
+  font-size: 30px;
+  font-family: "Italiana", sans-serif;
+}
+.bgimage{
+  height:650px;
+  width:100%;
+  background-image: url("https://files.oaiusercontent.com/file-A5uoiHREv1mihjmRfY3wDw?se=2024-11-28T07%3A43%3A20Z&sp=r&sv=2024-08-04&sr=b&rscc=max-age%3D604800%2C%20immutable%2C%20private&rscd=attachment%3B%20filename%3D7566b854-662b-4cf2-8657-b5b901059aec.webp&sig=zi40BxqWLmMNFuO9lCFvNoWEE1gHYWJp4/AQQJhoYA4%3D");
+  background-repeat: no-repeat;
+  
+  display: grid;
+  place-items: center;
+}
+.homedesc{
+  color:white;
+  font-weight: 600;
+  font-size: 100px;
+  position: relative;
+  bottom:200px;
+  right:470px;
 }
