@@ -1,13 +1,11 @@
-import dotenv from 'dotenv';
-dotenv.config();
-import { createClient } from '@supabase/supabase-js'
-const supabaseUrl = process.env.SUPABASE_URL;
-const supabaseKey = process.env.SUPABASE_KEY;
-const supabase = createClient(supabaseUrl, supabaseKey)
+import express from "express";
+import authRoute from "./routes/authRoute.js"
 
-async function getuser(){
-    const{data,error}=await supabase.from('users').select();
-    return data;
-}
+const app=express();
+app.use(express.json());
 
-console.log(await getuser());
+app.use("/auth", authRoute);
+
+app.listen(4000, () => {
+    console.log(`Server running on http://localhost:4000`);
+  });
