@@ -5,6 +5,9 @@ import passport from "./utils/passport.js";
 
 const app=express();
 app.use(express.json());
+app.use(session({ secret: "secret", resave: false, saveUninitialized: true }));
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use("/auth", authRoute);
 
