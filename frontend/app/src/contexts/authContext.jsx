@@ -43,8 +43,7 @@ export function AuthProvider({ children }) {
       }
     } catch (error) {
       console.error("Error during signup:", error);
-      setIsAuthenticated(false);
-      setUser(null);
+      
     }
   };
 

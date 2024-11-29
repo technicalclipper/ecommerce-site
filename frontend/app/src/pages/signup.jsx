@@ -2,8 +2,11 @@ import { useState } from "react";
 import Header from "../components/header";
 import Bgimage from "../components/bgimage";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../contexts/authContext";
+import { useContext } from "react";
 function Signup(){
     const [userDetails,setuserDetails]=useState({fullname:"",username:"",password:"" });
+    const { isAuthenticated,user,signup,login,logout } = useContext(AuthContext);
 
     function updateinfo(e){
         const name=e.target.name;
@@ -28,7 +31,7 @@ function Signup(){
             </div> 
             <div style={{display: 'flex', flexDirection: 'column', gap: '20px',alignItems:'center'}}>
                 <Link to="/login"><div className="loginhead">existing user?login</div></Link>
-                <button className="login">signup</button>
+                <button className="login" onClick={()=>{signup(userDetails.fullname,userDetails.username,userDetails.password)}}>signup</button>
             </div>  
         </div>
         </Bgimage>
