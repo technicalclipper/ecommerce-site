@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom"
+import { AuthContext } from "../contexts/authContext";
+import { useContext } from "react";
 export default function Header(){
-    const isAuthenticated=false ;
+    const { isAuthenticated,user,signup,login,logout } = useContext(AuthContext);
     return(
         <div className="header">
         <div className="navtitle">ecommerce</div>

@@ -5,16 +5,19 @@ import Home from './pages/home';
 import Header from './components/header';
 import Signup from './pages/signup';
 import { Route,Routes } from 'react-router-dom';
+import { AuthProvider } from './contexts/authContext';
 function App() {
   
   return (
     <>
+      <AuthProvider>
       <Header/>
       <Routes>
         <Route path="/" element={<Home/>}/>
         <Route path="/login" element={<Login/>}/>
         <Route path="/signup" element={<Signup/>}/>
       </Routes>
+      </AuthProvider>
     </>
     
   );

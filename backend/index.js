@@ -2,12 +2,14 @@ import express from "express";
 import authRoute from "./routes/authRoute.js"
 import session from "express-session"
 import passport from "./utils/passport.js";
+import cors from "cors"
 
 const app=express();
 app.use(express.json());
 app.use(session({ secret: "secret", resave: false, saveUninitialized: true }));
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(cors());
 
 app.use("/auth", authRoute);
 

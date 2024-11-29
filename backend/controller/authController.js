@@ -33,7 +33,7 @@ export const signup = async (req, res) => {
           return res.status(500).json({ message: "Error logging in after registration" });
         }
         console.log("Successfully registered and logged in");
-        return res.status(200).json({ message: "User logged in and registered" });
+        return res.status(200).json({ message: "User logged in and registered",user:req.user });
       });
     } catch (err) {
       console.error("Error during registration:", err);
@@ -58,7 +58,7 @@ export const login = (req, res, next) => {
         return next(err);
       }
       console.log("Successfully logged in");
-      return res.status(200).json({ message: "User logged in " });
+      return res.status(200).json({ message: "User logged in ",user:req.user});
     });
   })(req, res, next);
 };
@@ -68,8 +68,15 @@ export const logout = (req, res) => {
     if (err) {
       return next(err);
     }
-    res.json({status:"logout"});
+    res.status(200).json({status:"logout"});
   });
 };
 
-
+export const checkauth = (req, res) => {
+  if (req.isAuthenticated()) {
+    return res.status(200).json({ authenticated: true, message: "User is authenticated",user:req.user });
+  } else {
+    return res.status(401).json({ authenticated: false, message: "User is not authenticated" });
+    
+  }
+};
