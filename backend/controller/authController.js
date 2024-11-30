@@ -74,8 +74,10 @@ export const logout = (req, res) => {
 
 export const checkauth = (req, res) => {
   if (req.isAuthenticated()) {
+    console.log("super")
     return res.status(200).json({ authenticated: true, message: "User is authenticated",user:req.user });
   } else {
+    console.log("gomma")
     return res.status(401).json({ authenticated: false, message: "User is not authenticated" });
     
   }

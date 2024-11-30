@@ -7,7 +7,7 @@ import { useContext } from "react";
 function Login(){
     const [userDetails,setuserDetails]=useState({username:"",password:""});
     const { isAuthenticated,user,signup,login,logout } = useContext(AuthContext);
-
+    console.log("the user is",user);
     function updateinfo(e){
         const name=e.target.name;
         const value=e.target.value;

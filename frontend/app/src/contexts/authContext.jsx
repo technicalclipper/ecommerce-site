@@ -8,14 +8,14 @@ export function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
 
 
-  axios.defaults.baseURL = "http://localhost:4000/auth";
+  axios.defaults.baseURL = "http://localhost:4000";
   axios.defaults.headers.common["Content-Type"] = "application/json";
-
+  axios.defaults.withCredentials = true; 
 
   useEffect(() => {
     const checkAuth = async () => {
         try {
-        const response = await axios.get("/checkauth");
+        const response = await axios.get("/auth/checkauth");
         if (response.status === 200) {
           setIsAuthenticated(true);
           setUser(response.data.user); 
@@ -36,7 +36,7 @@ export function AuthProvider({ children }) {
 
   const signup = async (fullname, username, password) => {
     try {
-      const response = await axios.post("/signup", { fullname, username, password });
+      const response = await axios.post("/auth/signup", { fullname, username, password });
       if (response.status === 200) {
         setIsAuthenticated(true);
         setUser(response.data.user);
@@ -49,7 +49,7 @@ export function AuthProvider({ children }) {
 
   const login = async (username, password) => {
     try {
-      const response = await axios.post("/login", { username, password });
+      const response = await axios.post("/auth/login", { username, password });
       if (response.status === 200) {
         setIsAuthenticated(true);
         setUser(response.data.user);
@@ -63,7 +63,7 @@ export function AuthProvider({ children }) {
 
   const logout = async () => {
     try {
-      const response = await axios.post("/logout");
+      const response = await axios.post("/auth/logout");
       if (response.status === 200) {
         setIsAuthenticated(false);
         setUser(null);
