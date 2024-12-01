@@ -20,7 +20,6 @@ export default function Products(){
         const fetchdata = async()=>{
             const response=await axios.get("/product/getproducts");
             setProduct(response.data);
-            console.log("Auth is"+isAuthenticated);
         }
         fetchdata();
         
