@@ -12,7 +12,7 @@ export default function Header(){
             <Link to="/signup"><button className="header-login"> signup</button></Link></>):
             (<><Link to="/products"><button className="header-login">product</button></Link>
             <button className="header-login" onClick={logout}>logout</button>
-            <Link to="/signup"><button className="header-login"> cart</button></Link></>)}
+            <Link to="/cart"><button className="header-login"> cart</button></Link></>)}
         </div>
         </div>
     )

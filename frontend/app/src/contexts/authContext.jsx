@@ -1,26 +1,27 @@
 import { createContext, useState, useEffect } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 export const AuthContext = createContext();
 
 export function AuthProvider({ children }) {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [user, setUser] = useState(null);
-
+  const [loading, setLoading] = useState(true); 
+  const navigate = useNavigate();
 
   axios.defaults.baseURL = "http://localhost:4000";
   axios.defaults.headers.common["Content-Type"] = "application/json";
-  axios.defaults.withCredentials = true; 
+  axios.defaults.withCredentials = true;
 
   useEffect(() => {
     const checkAuth = async () => {
-        try {
+      try {
         const response = await axios.get("/auth/checkauth");
         if (response.status === 200) {
           setIsAuthenticated(true);
-          setUser(response.data.user); 
-        } 
-        else {  
+          setUser(response.data.user);
+        } else {
           setIsAuthenticated(false);
           setUser(null);
         }
@@ -28,6 +29,8 @@ export function AuthProvider({ children }) {
         console.error("Error checking authentication:", error);
         setIsAuthenticated(false);
         setUser(null);
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -40,10 +43,10 @@ export function AuthProvider({ children }) {
       if (response.status === 200) {
         setIsAuthenticated(true);
         setUser(response.data.user);
+        navigate("/"); 
       }
     } catch (error) {
       console.error("Error during signup:", error);
-      
     }
   };
 
@@ -53,6 +56,7 @@ export function AuthProvider({ children }) {
       if (response.status === 200) {
         setIsAuthenticated(true);
         setUser(response.data.user);
+        navigate("/"); 
       }
     } catch (error) {
       console.error("Error during login:", error);
@@ -67,16 +71,20 @@ export function AuthProvider({ children }) {
       if (response.status === 200) {
         setIsAuthenticated(false);
         setUser(null);
+        navigate("/"); 
       }
     } catch (error) {
       console.error("Error during logout:", error);
     }
   };
 
-
   return (
-    <AuthContext.Provider value={{ isAuthenticated, user, signup, login, logout }}>
-      {children}
+    <AuthContext.Provider value={{ isAuthenticated, user, loading, signup, login, logout }}>
+      {loading ? (
+        <div>Loading...</div> 
+      ) : (
+        children
+      )}
     </AuthContext.Provider>
   );
 }

@@ -120,3 +120,22 @@ input{
   font-size: 50px;
   margin-left: 100px;
 }
+.ptext{
+  color:white;
+  font-weight: 700;
+  font-size: 80px;
+  left: 1130px;
+  position: relative;
+  top:100px;
+  max-width: 550px;
+}
+.cart-image{
+  height:250px;
+  background-image: url("https://images.ctfassets.net/wowgx05xsdrr/7swYPqgimTCfhmPh1Z8vz6/9847e90aba08800e841e9abe9d65b109/article-header-descriptors-branding.jpg?fm=webp&w=3840&q=75");
+  background-size: cover; 
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.d{
+  font-size: 20px;
+}
